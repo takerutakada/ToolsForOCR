@@ -3,9 +3,9 @@ from glob import glob
 
 def jpg_to_png(BASE_DIR):
     '''
-    指定フォルダ内のjpgファイルをpngファイルに変換する
+    指定ディレクトリ内のjpgファイルをpngファイルに変換する
     '''
-    
+
     files = glob(BASE_DIR + '/*.jpg')
     for n, file in enumerate(files):
         imagefile = Image.open(file)

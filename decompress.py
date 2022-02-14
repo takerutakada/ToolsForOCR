@@ -1,14 +1,14 @@
 from glob import glob
 from os import rename
 
-def decompress(base_dir, ext):
+def decompress(BASE_DIR, ext):
     '''
     指定ディレクトリ内のすべてのサブディレクトリ内にある指定拡張子ファイルを指定ディレクトリに移動する
     '''
 
-    for i, d in enumerate(glob(f'{base_dir}/*')):
+    for i, d in enumerate(glob(f'{BASE_DIR}/*')):
         for j, file in enumerate(glob(f'{d}/*')):
-            rename(file, f'{base_dir}/{i}_{j}.{ext}')
+            rename(file, f'{BASE_DIR}/{i}_{j}.{ext}')
 
 if __name__ == '__main__':
     decompress('path/to/directory', 'png')
