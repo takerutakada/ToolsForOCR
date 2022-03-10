@@ -1,12 +1,15 @@
-from PIL import Image
+from PIL.Image import open
 from sys import exit
 from pyperclip import copy
 from pyocr import tesseract, get_available_tools
 from pyocr.builders import TextBuilder
 
-def image_to_txt(lang):
-    # Windows
-    tesseract.TESSERACT_CMD = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+OS = 'Lin'
+LANG = 'jpn'
+
+def image_to_txt(os, lang):
+    if os  == 'Win':
+        tesseract.TESSERACT_CMD = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
     tools = get_available_tools()
     if len(tools) == 0:
@@ -25,16 +28,11 @@ def image_to_txt(lang):
     # to the system locale settings for the default language
     # to use.
 
-    txt = tool.image_to_string(
-        Image.open('test.png'),
-        lang=lang,
-        builder=TextBuilder()
-    )
+    txt = tool.image_to_string(open('test.png'), lang=lang, builder=TextBuilder())
     # txt is a Python string
-
-    print(txt)
+    print(f'{"-"*50}\n{txt}\n{"-"*50}')
     copy(txt)
     print('copied to clipboard.')
 
 if __name__ == '__main__':
-    image_to_txt('jpn')
+    image_to_txt(OS,LANG)
