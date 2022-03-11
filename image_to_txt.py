@@ -5,14 +5,20 @@ from pyperclip import copy
 from pyocr import tesseract, get_available_tools
 from pyocr.builders import TextBuilder
 
+# Run with Windows→'Win'/Linux→'Lin'
 OS = 'Win'
 LANG = 'jpn'
 
 def image_to_txt(os, lang):
+    '''
+    Converting strings in an image to text
+    '''
+    
     root = Tk()
     root.lower()
     root.withdraw()
     if os  == 'Win':
+        # Choose your full-path of tesseract.exe
         tesseract.TESSERACT_CMD = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
     tools = get_available_tools()
@@ -35,7 +41,6 @@ def image_to_txt(os, lang):
     print(f)
 
     txt = tool.image_to_string(open(f), lang=lang, builder=TextBuilder())
-    # txt is a Python string
     print(f'{"-"*50}\n{txt}\n{"-"*50}')
     copy(txt)
     print('copied to clipboard.')
