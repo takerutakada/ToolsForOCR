@@ -17,3 +17,6 @@ csv内の1列に並んでいるデータを指定行×指定列の表に変換�
 
 **◆images_to_txt.py**  
 キャプチャした画像からテキストを読み取り、クリップボードにコピーする
+
+**◆tqdm_Wdescription.py**  
+tqdmを二重ループで使用し、両ループでset_descriptionを適用する
